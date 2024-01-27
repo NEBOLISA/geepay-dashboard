@@ -1,0 +1,86 @@
+.PerformanceSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 1rem;
+  column-gap: 1.5rem;
+  flex: 40%;
+}
+.performance-card {
+  background-color: var(--performance-card-bg-color);
+  border: var(--bar-chart-div-border);
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.top-performance {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+.mid-performance {
+  margin-bottom: 0.5rem;
+}
+.mid-perf-text {
+  color: var(--mid-perf-text-color);
+  font-weight: 500;
+  font-size: 18px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  margin-bottom: 0.3rem;
+}
+.mid-perf-value {
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--mid-perf-value-color);
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+.bottom-performance {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.percent-div {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  border-radius: 10px;
+
+  padding: 4px 6px;
+}
+.loss-percent-div {
+  background-color: rgba(237, 84, 78, 0.12);
+}
+.profit-percent-div {
+  background-color: rgba(52, 202, 165, 0.12);
+}
+.percent-value {
+  font-weight: 500;
+  font-size: 12px;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+.loss-percent-value {
+  color: #ed544e;
+}
+.profit-percent-value {
+  color: #34caa5;
+}
+.prev-month-text {
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--prev-mnth-text-color);
+}
+@media (max-width: 1101px) {
+  .performance-card {
+    width: 100%;
+    height: 200px;
+  }
+  .PerformanceSection {
+    width: 100%;
+  }
+}
+@media (max-width: 555px) {
+  .PerformanceSection {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,63 @@
+.ordercard {
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr repeat(3, 1fr);
+  /* grid-template-columns: 150px 150px 100px 100px 100px; */
+  column-gap: 1.5rem;
+  align-items: center;
+  border-top: var(--ordercard-top-border);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.ordercard:hover {
+  background-color: var(--ordercard-hover);
+}
+.name-div,
+.invoice-div {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.invoice-div {
+  cursor: pointer;
+}
+.name {
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--ordercard-name-color);
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+.date {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #737373;
+}
+.amount {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--odercard-amt-color);
+}
+.status {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  text-transform: capitalize;
+}
+.status-paid {
+  color: #34caa5;
+}
+.status-refund {
+  color: #ed544e;
+}
+.view-text {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--ordercard-view-text-color);
+}
+@media (max-width: 555px) {
+  .ordercard {
+    width: 650px;
+  }
+}
