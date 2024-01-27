@@ -279,7 +279,7 @@ h3 {
 .responsiveContainer {
   margin-top: 1.3rem;
   width: 100% !important;
-  height: 80% !important;
+  /* height: 80% !important; */
 }
 .hamburger {
   width: 30px;
