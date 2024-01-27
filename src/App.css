@@ -30,6 +30,7 @@
   --progress-bottom-text-div-color: #525252;
   --profile-comp-box-shadow: -2px 1px 9px 2px #e2dede94;
   --profile-body-border-top: 1px solid #e8e8e8;
+  --side-bar-active-bar: #000;
 }
 
 * {
@@ -66,6 +67,7 @@
   --progress-bottom-text-div-color: #8c8c8c;
   --profile-comp-box-shadow: none;
   --profile-body-border-top: 0.4px solid rgb(139, 139, 139);
+  --side-bar-active-bar: #fff;
 }
 p,
 h1,

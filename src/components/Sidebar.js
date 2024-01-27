@@ -21,7 +21,7 @@ import { IoMdClose } from "react-icons/io";
 const Sidebar = () => {
   const { DarkMode, setDarkMode, toggleTheme, navState, closeNav } =
     useContext(ThemeContext);
-  const [activeItem, setActiveItem] = useState(null);
+  const [activeItem, setActiveItem] = useState("Item 1");
   //const [DarkMode, setDarkMode] = useState(false);
   // Function to handle item click
   const handleItemClick = (itemName) => {
