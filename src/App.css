@@ -194,7 +194,7 @@ h3 {
   border: var(--bar-chart-div-border);
   border-radius: 14px;
   overflow-y: scroll;
-  height: 350px;
+  max-height: 350px;
   flex: 60%;
 }
 
@@ -210,12 +210,18 @@ h3 {
   color: var(--sales-trend-header-color);
   font-family: "Plus Jakarta Sans", sans-serif;
 }
-.top-header p {
+
+.top-header-btn {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 500;
   font-size: 18px;
   color: #34caa5;
   cursor: pointer;
+  border: none;
+  background: none;
+}
+.disable {
+  display: none;
 }
 .order-header {
   display: grid;
@@ -242,7 +248,7 @@ h3 {
   margin-top: 1.5rem;
 
   overflow-y: scroll;
-  height: 350px;
+  max-height: 350px;
   flex: 40%;
 }
 .platform-header {

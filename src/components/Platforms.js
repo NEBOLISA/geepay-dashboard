@@ -1,70 +1,51 @@
 import ProgressComp from "./ProgressComp";
-
+import { platformData } from "../mockData";
+import { useRef, useState } from "react";
 const Platforms = () => {
   const backgroundColors = ["#6160DC", "#54C5EB", "#FFB74A", "#FF4A55"];
-  const selectedColor =
-    backgroundColors[Math.floor(Math.random() * backgroundColors.length)];
+  const platformRef = useRef(null);
+
+  const [copiedData, setCopiedData] = useState([...platformData]);
+  const [expanded, setExpanded] = useState(false);
+
+  const toggleDisplay = () => {
+    setExpanded(!expanded);
+  };
+
+  let maxNumber = 3;
+  let dataToShow;
+  let disableBtn = platformData.length <= maxNumber;
+
+  let sliceData = copiedData.slice(0, maxNumber);
+  if (platformData.length <= maxNumber || expanded === true) {
+    dataToShow = platformData;
+  } else {
+    dataToShow = sliceData;
+  }
 
   return (
-    <div className="platforms">
+    <div ref={platformRef} className="platforms">
       <div className="platform-header">
         <h2 className="platform-left-header">Top Platform</h2>
-        <p className="platform-right-header">See All</p>
+        <button
+          className={disableBtn ? "disable" : "top-header-btn"}
+          disabled={disableBtn}
+          onClick={toggleDisplay}
+        >
+          {expanded ? "See Less" : "See All"}{" "}
+        </button>
       </div>
-      <ProgressComp
-        title={"Book Bazaar"}
-        progress={60}
-        leftText={"2500000"}
-        rightText={"15"}
-        backgroundcolor={backgroundColors[0]}
-        currency={"$"}
-        sign={"+"}
-      />
-      <ProgressComp
-        title={"Artisan Aisle"}
-        progress={40}
-        leftText={"1800000"}
-        rightText={"10"}
-        backgroundcolor={backgroundColors[1]}
-        currency={"$"}
-        sign={"+"}
-      />
-      <ProgressComp
-        title={"Toy Troop"}
-        progress={20}
-        leftText={"1200000"}
-        rightText={"8"}
-        backgroundcolor={backgroundColors[2]}
-        currency={"$"}
-        sign={"+"}
-      />
-      <ProgressComp
-        title={"XStore"}
-        progress={24}
-        leftText={"2500000"}
-        rightText={"15"}
-        backgroundcolor={backgroundColors[3]}
-        currency={"$"}
-        sign={"+"}
-      />
-      <ProgressComp
-        title={"XStore"}
-        progress={24}
-        leftText={"2500000"}
-        rightText={"15"}
-        backgroundcolor={backgroundColors[0]}
-        currency={"$"}
-        sign={"+"}
-      />
-      <ProgressComp
-        title={"XStore"}
-        progress={24}
-        leftText={"2500000"}
-        rightText={"15"}
-        backgroundcolor={backgroundColors[2]}
-        currency={"$"}
-        sign={"+"}
-      />
+      {dataToShow.map((item) => (
+        <ProgressComp
+          title={item.title}
+          progress={item.progress}
+          leftText={item.value}
+          rightText={item.percent}
+          backgroundcolor={item.colorValue}
+          currency={item.currency}
+          sign={item.sign}
+        />
+      ))}
     </div>
   );
 };
