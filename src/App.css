@@ -31,10 +31,14 @@
   --profile-comp-box-shadow: -2px 1px 9px 2px #e2dede94;
   --profile-body-border-top: 1px solid #e8e8e8;
   --side-bar-active-bar: #000;
+  --nav-search-color: #000;
+  --profile-item-hover: #ecebeb;
 }
 
 * {
   box-sizing: border-box;
+  scrollbar-color: #34caa5 white;
+  scrollbar-width: auto;
 }
 
 .dark_mode {
@@ -68,6 +72,8 @@
   --profile-comp-box-shadow: none;
   --profile-body-border-top: 0.4px solid rgb(139, 139, 139);
   --side-bar-active-bar: #fff;
+  --nav-search-color: #fff;
+  --profile-item-hover: #2b2b2b;
 }
 p,
 h1,
@@ -95,6 +101,9 @@ h3 {
   padding: 0.5rem 0.4rem;
   border-bottom: var(--nav-border-bottom);
 }
+.tranform-180 {
+  transform: rotate(180deg);
+}
 .left-nav {
   font-family: "Plus Jakarta Sans", sans-serif;
   color: var(--nav-left-nav);
@@ -121,6 +130,8 @@ h3 {
 .nav-search {
   outline: none;
   border: none;
+  width: 100%;
+  color: var(--nav-search-color);
   background: transparent;
 }
 .nav-search::placeholder {
@@ -186,6 +197,7 @@ h3 {
   height: 350px;
   flex: 60%;
 }
+
 .top-header {
   display: flex;
   align-items: center;
@@ -256,7 +268,7 @@ h3 {
 }
 .progress-bar {
   width: 100%;
-  height: 15px;
+  height: 10px;
   border-radius: 10px;
   background-color: #e6e6e6;
 }
@@ -327,7 +339,7 @@ h3 {
   cursor: pointer;
 }
 .body-text:hover {
-  background-color: #ecebeb;
+  background-color: var(--profile-item-hover);
 }
 @media (max-width: 1101px) {
   .top-section {
@@ -342,7 +354,12 @@ h3 {
   .App {
     overflow-y: auto;
   }
-  .orders,
+  .orders {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    overflow-x: hidden;
+  }
   .platforms {
     width: 100%;
     margin-top: 0;
@@ -378,7 +395,7 @@ h3 {
   .navbar {
     left: 0px;
   }
-  .responsiveContainer {
+  .recharts-wrapper {
     width: 700px !important;
   }
   .hamburger,
@@ -397,12 +414,16 @@ h3 {
   .right-nav {
     justify-content: start;
   }
+  .ordercard-wrapper-div {
+    width: 100%;
+    overflow-x: scroll;
+  }
 }
 @media (max-width: 555px) {
   .order-header {
     width: 650px;
   }
   .top-header {
-    width: 650px;
+    /* width: 650px; */
   }
 }

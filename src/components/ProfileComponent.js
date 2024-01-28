@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+
 const ProfileComponent = ({ profileState }) => {
   return (
     <div

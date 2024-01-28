@@ -9,7 +9,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  /* justify-content: center; */
+
   background-color: var(--sidebar-bg-color);
   border-right: var(--sidebar-border);
 }

@@ -4,7 +4,7 @@ import Select from "react-select";
 import "./SalesTrend.css";
 import dropIcon from "../assets/icons/nav-icon4.svg";
 const SalesTrend = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState("Weekly");
   //   const Listoptions = [
   //     { value: "weekly", label: "Weekly" },
   //     { value: "monthly", label: "Monthly" },
@@ -37,8 +37,9 @@ const SalesTrend = () => {
           </select>
         </div>
       </div>
-
-      <RechartBar selectedOption={selectedOption} />
+      <div className="rechart-div">
+        <RechartBar selectedOption={selectedOption} />
+      </div>
     </div>
   );
 };

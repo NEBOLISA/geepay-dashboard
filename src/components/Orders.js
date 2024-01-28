@@ -7,22 +7,25 @@ const Orders = () => {
         <h3>Last Orders</h3>
         <p>See All</p>
       </div>
-      <div className="order-header">
-        <p>Name</p>
-        <p>Date</p>
-        <p>Amount</p>
-        <p>Status</p>
-        <p>Invoice</p>
+      <div className="ordercard-wrapper-div">
+        <div className="order-header">
+          <p>Name</p>
+          <p>Date</p>
+          <p>Amount</p>
+          <p>Status</p>
+          <p>Invoice</p>
+        </div>
+
+        {data.map((item) => (
+          <OrderCard
+            name={item.name}
+            date={item.date}
+            amount={item.amount}
+            status={item.status}
+            profile={item.profile}
+          />
+        ))}
       </div>
-      {data.map((item) => (
-        <OrderCard
-          name={item.name}
-          date={item.date}
-          amount={item.amount}
-          status={item.status}
-          profile={item.profile}
-        />
-      ))}
     </div>
   );
 };

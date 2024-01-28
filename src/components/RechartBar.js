@@ -16,7 +16,11 @@ const RechartBar = ({ selectedOption }) => {
   const { DarkMode } = useContext(ThemeContext);
 
   return (
-    <ResponsiveContainer height={300} className="responsiveContainer">
+    <ResponsiveContainer
+      minWidth={500}
+      height={300}
+      className="responsiveContainer"
+    >
       <BarChart
         width={500}
         height={300}

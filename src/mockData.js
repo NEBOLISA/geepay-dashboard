@@ -39,4 +39,11 @@ export const data = [
     status: "paid",
     profile: pic1,
   },
+  {
+    name: "Phillip Lubin",
+    date: "Nov 13, 2023",
+    amount: "78000",
+    status: "paid",
+    profile: pic1,
+  },
 ];

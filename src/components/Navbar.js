@@ -1,4 +1,5 @@
 import searchIcon from "../assets/icons/nav-icon4.svg";
+import searchIconDark from "../assets/icons/nav-icon4-dark.svg";
 import dateIcon from "../assets/icons/nav-icon1.svg";
 import dateIconDark from "../assets/icons/nav-icon1-dark.svg";
 import notifyIcon from "../assets/icons/nav-icon2.svg";
@@ -6,13 +7,31 @@ import notifyIconDark from "../assets/icons/nav-icon2-dark.svg";
 import profilePic from "../assets/images/nav-image1.svg";
 import dropIcon from "../assets/icons/nav-icon3.svg";
 import dropIconDark from "../assets/icons/nav-icon3-dark.svg";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 import { GiHamburgerMenu } from "react-icons/gi";
 import ProfileComponent from "./ProfileComponent";
 const Navbar = () => {
-  const { DarkMode, openNav, showProfile, profileState } =
-    useContext(ThemeContext);
+  const {
+    DarkMode,
+    setProfileState,
+    openNav,
+    closeNav,
+    showProfile,
+    profileState,
+  } = useContext(ThemeContext);
+  const profileRef = useRef(null);
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  const handleClickOutside = (event) => {
+    if (profileRef.current && !profileRef.current.contains(event.target)) {
+      setProfileState(false);
+    }
+  };
 
   const today = new Date();
   const options = {
@@ -32,7 +51,7 @@ const Navbar = () => {
           <div className="input-div">
             <img
               style={{ width: "12px", height: "12px" }}
-              src={searchIcon}
+              src={DarkMode ? searchIconDark : searchIcon}
               alt="search-icon"
             />
             <input
@@ -72,7 +91,7 @@ const Navbar = () => {
               alt="notifi-icon"
             />
           )}
-          <div onClick={showProfile} className="profile-div">
+          <div ref={profileRef} onClick={showProfile} className="profile-div">
             <img src={profilePic} alt="profile-pic" />
             <div className="names">
               <p
@@ -95,7 +114,11 @@ const Navbar = () => {
                 Justin@gmail.com
               </p>
             </div>
-            <img src={DarkMode ? dropIconDark : dropIcon} alt="drop-icon" />
+            <img
+              className={profileState === true ? "" : "tranform-180"}
+              src={DarkMode ? dropIconDark : dropIcon}
+              alt="drop-icon"
+            />
           </div>
         </div>
       </div>
