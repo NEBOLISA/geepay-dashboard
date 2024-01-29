@@ -1,6 +1,7 @@
 import ProgressComp from "./ProgressComp";
 import { platformData } from "../mockData";
 import { useRef, useState } from "react";
+import emptyIcon from "../assets/images/no-data.svg";
 const Platforms = () => {
   const backgroundColors = ["#6160DC", "#54C5EB", "#FFB74A", "#FF4A55"];
   const platformRef = useRef(null);
@@ -25,27 +26,59 @@ const Platforms = () => {
 
   return (
     <div ref={platformRef} className="platforms">
-      <div className="platform-header">
-        <h2 className="platform-left-header">Top Platform</h2>
-        <button
-          className={disableBtn ? "disable" : "top-header-btn"}
-          disabled={disableBtn}
-          onClick={toggleDisplay}
+      {platformData.length !== 0 ? (
+        <>
+          <div className="platform-header">
+            <h2 className="platform-left-header">Top Platform</h2>
+            <button
+              className={disableBtn ? "disable" : "top-header-btn"}
+              disabled={disableBtn}
+              onClick={toggleDisplay}
+            >
+              {expanded ? "See Less" : "See All"}{" "}
+            </button>
+          </div>
+          {dataToShow.map((item) => (
+            <ProgressComp
+              title={item.title}
+              progress={item.progress}
+              leftText={item.value}
+              rightText={item.percent}
+              backgroundcolor={item.colorValue}
+              currency={item.currency}
+              sign={item.sign}
+            />
+          ))}
+        </>
+      ) : (
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
         >
-          {expanded ? "See Less" : "See All"}{" "}
-        </button>
-      </div>
-      {dataToShow.map((item) => (
-        <ProgressComp
-          title={item.title}
-          progress={item.progress}
-          leftText={item.value}
-          rightText={item.percent}
-          backgroundcolor={item.colorValue}
-          currency={item.currency}
-          sign={item.sign}
-        />
-      ))}
+          <p
+            style={{
+              textAlign: "center",
+              fontWeight: "bold",
+              fontSize: "32px",
+              marginBottom: "1.7rem",
+            }}
+          >
+            No Platforms to Show
+          </p>
+          <img
+            style={{
+              width: "240px",
+              height: "240px",
+              display: "block",
+              margin: "0 auto",
+            }}
+            src={emptyIcon}
+            alt="emptyIcon"
+          />
+        </div>
+      )}
     </div>
   );
 };
